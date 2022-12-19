@@ -53,29 +53,34 @@ const Products = () => {
   const ShowProducts = () => {
     return(
         <>
-          <div className="buttons d-flex justify-content-center mb-5 pb-5">
+    <div className="buttons d-flex justify-content-center mb-5 pb-5">
         <button className="btn btn-outline-dark me-2" onClick={()=>setFilter(data)}>All</button>
         <button className="btn btn-outline-dark me-2" onClick={()=>filterProduct("men's clothing")}>Men's Clothing</button>
         <button className="btn btn-outline-dark me-2" onClick={()=>filterProduct("women's clothing")}>Women's Clothing</button>
         <button className="btn btn-outline-dark me-2" onClick={()=>filterProduct("jewelery")}>Jewelery</button>
         <button className="btn btn-outline-dark me-2" onClick={()=>filterProduct("electronics")}>Electronic</button>   
     </div>
-    {filter.map((product)=>{
-        return(
-            <>
-            <div className="col-md-3">
-            <div classNam="card h-100 text-center p-4" key={product.id}>
-            <img src={product.image} class="card-img-top" alt={product.title} height="250px" />
-            <div className="card-body">
-            <h5 className="card-title mb-0">{product.title.substring(0,12)}...</h5>
-            <p className="card-text laed fw-bold">${product.price}</p>
-            <NavLink to={`/products/${product.id}`} className="btn btn-outline-dark">Buy Now</NavLink>
-  </div>
-</div>
-            </div>
-            </>
-        )
-    })}
+
+
+   
+   <div className="row justify-content-center gap-3">
+        {filter.map((product)=>{
+            return(
+                <>
+                <div className="col-md-3">
+                <div className="card h-100 text-center p-4 card-wrapper" key={product.id}>
+                  <img src={product.image} class="card-img-top" alt={product.title} height="150px" width="150px" />
+                  <div className="card-body">
+                  <h5 className="card-title mb-0">{product.title.substring(0,12)}...</h5>
+                  <p className="card-text laed fw-bold">${product.price}</p>
+                  <NavLink to={`/products/${product.id}`} className="btn btn-outline-dark">Buy Now</NavLink>
+                  </div>
+                </div>
+                </div>
+                </>
+            )
+        })}
+    </div>
         </>
     )
    
@@ -89,7 +94,7 @@ const Products = () => {
                     <hr />
                 </div>
             </div>
-            <div className="row justify-content-center">
+            <div className="">
                 {loading ? <Loading /> : <ShowProducts />}
             </div>
         </div>
